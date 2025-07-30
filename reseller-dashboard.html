@@ -107,30 +107,25 @@
     </div>
 
     <script>
+      // Load saved entries when page loads
+      window.onload = function () {
+        loadTableFromStorage("inventoryTable", "inventoryData");
+        loadTableFromStorage("salesTable", "salesData");
+      };
+
       function addInventory() {
-        const item = document.getElementById("item").value;
-        const category = document.getElementById("category").value;
-        const cost = document.getElementById("cost").value;
+        const date = document.getElementById("date").value;
         const platform = document.getElementById("platform").value;
-        const listPrice = document.getElementById("listPrice").value;
-        const soldPrice = document.getElementById("soldPrice").value;
+        const price = document.getElementById("price").value;
         const profit = document.getElementById("profit").value;
-        const status = document.getElementById("status").value;
 
         const table = document
           .getElementById("inventoryTable")
           .getElementsByTagName("tbody")[0];
         const newRow = table.insertRow();
-        newRow.innerHTML = `
-          <td>${item}</td>
-          <td>${category}</td>
-          <td>${cost}</td>
-          <td>${platform}</td>
-          <td>${listPrice}</td>
-          <td>${soldPrice}</td>
-          <td>${profit}</td>
-          <td>${status}</td>
-        `;
+        newRow.innerHTML = `<td>${date}</td><td>${platform}</td><td>${price}</td><td>${profit}</td><td>Active</td>`;
+
+        saveTableToStorage("inventoryTable", "inventoryData");
       }
 
       function addSale() {
@@ -138,11 +133,51 @@
         const platform = document.getElementById("salePlatform").value;
         const price = document.getElementById("price").value;
         const profit = document.getElementById("profit").value;
+
         const table = document
           .getElementById("salesTable")
           .getElementsByTagName("tbody")[0];
         const newRow = table.insertRow();
         newRow.innerHTML = `<td>${date}</td><td>${platform}</td><td>${price}</td><td>${profit}</td>`;
+
+        saveTableToStorage("salesTable", "salesData");
+      }
+
+      function saveTableToStorage(tableId, key) {
+        const table = document
+          .getElementById(tableId)
+          .getElementsByTagName("tbody")[0];
+        const rows = table.rows;
+        const data = [];
+
+        for (let i = 0; i < rows.length; i++) {
+          const cells = rows[i].cells;
+          const rowData = [];
+          for (let j = 0; j < cells.length; j++) {
+            rowData.push(cells[j].innerText);
+          }
+          data.push(rowData);
+        }
+
+        localStorage.setItem(key, JSON.stringify(data));
+      }
+
+      function loadTableFromStorage(tableId, key) {
+        const data = JSON.parse(localStorage.getItem(key));
+        if (!data) return;
+
+        const table = document
+          .getElementById(tableId)
+          .getElementsByTagName("tbody")[0];
+        table.innerHTML = ""; // Clear old rows
+
+        for (let row of data) {
+          const newRow = table.insertRow();
+          for (let cell of row) {
+            const td = newRow.insertCell();
+            td.innerText = cell;
+          }
+        }
       }
     </script>
   </body>
