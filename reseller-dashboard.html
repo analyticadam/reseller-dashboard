@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hyperdriveflips Reseller Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+        h1 { color: #333; }
+        table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
+        th { background-color: #f2f2f2; }
+        .section { margin-bottom: 30px; }
+        input[type="text"], input[type="number"] { padding: 5px; margin-right: 10px; }
+        button { padding: 6px 12px; }
+    </style>
+</head>
+<body>
+    <h1>📦 Hyperdriveflips Reseller Dashboard</h1>
+
+    <div class="section">
+        <h2>1. Inventory Tracker</h2>
+        <table id="inventoryTable">
+            <thead>
+                <tr><th>Item</th><th>Cost</th><th>Platform</th><th>Status</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <br>
+        <input type="text" id="item" placeholder="Item Name">
+        <input type="number" id="cost" placeholder="Cost">
+        <input type="text" id="platform" placeholder="Platform">
+        <input type="text" id="status" placeholder="Status">
+        <button onclick="addInventory()">Add Item</button>
+    </div>
+
+    <div class="section">
+        <h2>2. Listing Checklist</h2>
+        <ul>
+            <li><input type="checkbox"> Photos Taken</li>
+            <li><input type="checkbox"> Title Optimized</li>
+            <li><input type="checkbox"> Description Written</li>
+            <li><input type="checkbox"> Listed on eBay</li>
+            <li><input type="checkbox"> Listed on Whatnot</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>3. Sales Log</h2>
+        <table id="salesTable">
+            <thead>
+                <tr><th>Date</th><th>Platform</th><th>Price</th><th>Profit</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <br>
+        <input type="text" id="date" placeholder="Date">
+        <input type="text" id="salePlatform" placeholder="Platform">
+        <input type="number" id="price" placeholder="Sale Price">
+        <input type="number" id="profit" placeholder="Net Profit">
+        <button onclick="addSale()">Add Sale</button>
+    </div>
+
+    <script>
+        function addInventory() {
+            const item = document.getElementById('item').value;
+            const cost = document.getElementById('cost').value;
+            const platform = document.getElementById('platform').value;
+            const status = document.getElementById('status').value;
+            const table = document.getElementById('inventoryTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            newRow.innerHTML = `<td>${item}</td><td>${cost}</td><td>${platform}</td><td>${status}</td>`;
+        }
+
+        function addSale() {
+            const date = document.getElementById('date').value;
+            const platform = document.getElementById('salePlatform').value;
+            const price = document.getElementById('price').value;
+            const profit = document.getElementById('profit').value;
+            const table = document.getElementById('salesTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            newRow.innerHTML = `<td>${date}</td><td>${platform}</td><td>${price}</td><td>${profit}</td>`;
+        }
+    </script>
+</body>
+</html>
