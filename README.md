@@ -1,23 +1,18 @@
-# Reseller Dashboard
+# 🧰 Reseller Dashboard
 
-This is a collection of workflow systems, checklists, and tools I designed to help streamline my eBay resale business. From inventory organization to shipping zone layouts and task batching systems, these tools helped me stay productive while building my side hustle during spinal recovery.
+A lightweight inventory + listing tracker I created for my eBay/WhatNot reselling workflow under the brand **BigThrifting** and **HyperdriveFlips**.
 
-## Features
+🔗 [Live Dashboard](https://analyticadam.github.io/reseller-dashboard/)
 
-- Inventory intake checklist  
-- Daily and weekly task flows  
-- Workspace setup diagrams  
-- Photo and listing prep systems  
-- Shipping zone maps and label management
+---
 
-## Tools Used
+### 🧾 Features
+- Track inventory, listing status, platforms
+- Add notes or sale details
+- Simple HTML interface with room to grow
 
-- Notion  
-- Google Sheets  
-- Canva (for diagrams)  
-- Manual batch systems
+---
 
-## Why It Matters
+This was built as part of my journey from HR + logistics into tech. Currently used to manage my real inventory and projects!
 
-While not a traditional app, this dashboard reflects my problem-solving mindset and ability to build efficient systems using the tools I had on hand.
-
+💻 [Visit my GitHub](https://github.com/analyticadam) | 📫 farleyadamc@gmail.com
